@@ -2,8 +2,10 @@
    no translucency — a plain colour swap so it never reads as glass. */
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
   color: var(--on-dark);
   background: transparent;
