@@ -21,6 +21,13 @@
   --accent: #ffc814;
   --accent-ink: #171308;
 
+  /* Teal, sampled from the logo mark alongside the navy: a secondary
+     highlight for icons, diagrams and small accents — never a third
+     competing "primary" colour. */
+  --teal: #0e7490;
+  --teal-light: #5eead4;
+  --teal-soft: color-mix(in srgb, var(--teal) 16%, transparent);
+
   --line: color-mix(in srgb, currentColor 14%, transparent);
   /* The accent is gold-on-navy contrast only (~12:1); on paper it drops to
      ~1.4:1, so focus rings and small labels default to ink and switch to

@@ -39,8 +39,6 @@ export default function App() {
   const [picked, setPicked] = useState([])
   useReveal()
 
-  const ask = (id) => setPicked((current) => (current.includes(id) ? current : [...current, id]))
-
   return (
     <>
       <a className="skip-link" href="#main">
@@ -50,7 +48,7 @@ export default function App() {
       <main id="main">
         <Hero />
         <About />
-        <Services onAsk={ask} />
+        <Services />
         <Process />
         <Team />
         <Testimonials />

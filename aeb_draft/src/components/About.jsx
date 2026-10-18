@@ -50,24 +50,29 @@ export default function About() {
               We envision a world where young minds and emerging entrepreneurs from
               underrepresented communities are equipped with the tools, skills and platforms to
               thrive in the digital economy, and to lead meaningful change in their communities.
-              AEB Innovators stands at the crossroads of technology, mentorship and inclusive
-              growth, and Aleem remains an advocate and promoter of e-commerce-based platforms.
             </p>
 
-            <dl className="founder__facts small">
-              <div>
-                <dt>Founder&rsquo;s experience</dt>
+            <dl className="founder__stats">
+              <div className="founder__stat">
+                <dt className="small soft">Founder&rsquo;s experience</dt>
                 <dd>17+ years</dd>
               </div>
-              <div>
-                <dt>Registered</dt>
-                <dd>SECP, as a limited liability partnership</dd>
+              <div className="founder__stat">
+                <dt className="small soft">Registered</dt>
+                <dd>SECP LLP</dd>
               </div>
-              <div>
-                <dt>Based in</dt>
-                <dd>Rawalpindi, Pakistan</dd>
+              <div className="founder__stat">
+                <dt className="small soft">Based in</dt>
+                <dd>Rawalpindi</dd>
               </div>
             </dl>
+
+            <blockquote className="founder__pull">
+              <p>
+                &ldquo;AEB Innovators stands at the crossroads of technology, mentorship and
+                inclusive growth.&rdquo;
+              </p>
+            </blockquote>
           </div>
         </div>
       </section>

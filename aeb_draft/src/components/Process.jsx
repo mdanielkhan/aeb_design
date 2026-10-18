@@ -3,7 +3,7 @@ import './Process.css'
 
 export default function Process() {
   return (
-    <section className="process on-dark" id="process" aria-labelledby="process-title">
+    <section className="process" id="process" aria-labelledby="process-title">
       <div className="wrap">
         <div className="process__head" data-reveal>
           <p className="eyebrow">How we work</p>

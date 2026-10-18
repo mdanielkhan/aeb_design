@@ -16,15 +16,26 @@
 }
 
 .team__grid {
-  row-gap: clamp(2rem, 1.6rem + 1.6vw, 3rem);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
 }
 
 .person {
-  grid-column: span 4;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
 }
 
 .person__frame {
   position: relative;
+  display: block;
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: var(--navy);
@@ -34,8 +45,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 18%;
+  object-position: 50% 0%;
   filter: grayscale(1) contrast(1.08) brightness(1.02);
+  transition: filter 420ms var(--ease-out);
 }
 
 /* A single navy duotone wash so mismatched source photos read as one set. */
@@ -46,9 +58,39 @@
   background: linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 55%, var(--accent) 180%);
   mix-blend-mode: color;
   opacity: 0.88;
+  transition: opacity 420ms var(--ease-out);
 }
 
-.person figcaption {
+.person__frame::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease-out);
+  z-index: 1;
+}
+
+.person:hover .person__frame img,
+.person:focus-visible .person__frame img {
+  filter: grayscale(0) contrast(1.02) brightness(1);
+}
+
+.person:hover .person__frame::after,
+.person:focus-visible .person__frame::after {
+  opacity: 0;
+}
+
+.person:hover .person__frame::before,
+.person:focus-visible .person__frame::before {
+  transform: none;
+}
+
+.person__caption {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
@@ -69,14 +111,128 @@
     margin-top: 1rem;
   }
 
-  .person {
-    grid-column: span 2;
+  .team__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: none;
   }
 }
 
 @media (max-width: 540px) {
-  .person {
-    grid-column: span 4;
-    max-width: 16rem;
+  .team__grid {
+    grid-template-columns: minmax(0, 1fr);
   }
+
+  .person {
+    max-width: 18rem;
+  }
+}
+
+/* ---------- bio drawer ---------- */
+
+.person-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+}
+
+.person-drawer__scrim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: rgba(6, 15, 22, 0.6);
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .person-drawer__scrim {
+    animation: drawer-scrim-in 280ms var(--ease-out);
+  }
+  .person-drawer__panel {
+    animation: drawer-panel-in 320ms var(--ease-out);
+  }
+}
+
+@keyframes drawer-scrim-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes drawer-panel-in {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+}
+
+.person-drawer__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(26rem, 100%);
+  overflow-y: auto;
+  background: var(--paper);
+  box-shadow: -24px 0 48px -16px rgba(2, 8, 14, 0.4);
+}
+
+.person-drawer__close {
+  position: sticky;
+  top: 1rem;
+  left: calc(100% - 3.5rem);
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin: 1rem 1rem -2.75rem auto;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.person-drawer__close-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.person-drawer__photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 0%;
+}
+
+.person-drawer__body {
+  padding: 1.75rem clamp(1.5rem, 1.3rem + 1vw, 2rem) 2.5rem;
+}
+
+.person-drawer__name {
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);
+}
+
+.person-drawer__role {
+  margin-top: 0.4rem;
+}
+
+.person-drawer__bio {
+  margin-top: 1.5rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.person-drawer__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.person-drawer__skills li {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--line);
+  font-size: var(--step-small);
+  color: var(--ink-soft);
 }
