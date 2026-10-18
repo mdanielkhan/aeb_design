@@ -52,7 +52,6 @@ export const services = [
     text: 'Amazon, Shopify, eBay and Walmart account setup, product sourcing, PPC, fulfillment and store management.',
     icon: 'shopping-cart',
     chips: ['Amazon', 'Shopify', 'eBay', 'Walmart', 'PPC'],
-    menuNote: 'Amazon, Shopify, eBay, Walmart store setup and management',
   },
   {
     id: 'systems',
@@ -61,7 +60,6 @@ export const services = [
     text: 'Web development, CMS, LMS, HMS and ERP systems, automation and API integrations.',
     icon: 'boxes',
     chips: ['CMS', 'LMS', 'HMS', 'ERP', 'API'],
-    menuNote: 'Web, CMS, LMS, HMS and ERP systems',
   },
   {
     id: 'marketing',
@@ -70,7 +68,6 @@ export const services = [
     text: 'AI SEO, LLM optimization, advertising on Meta, Google, TikTok, YouTube and LinkedIn, market research and content strategy.',
     icon: 'megaphone',
     chips: ['SEO', 'Meta', 'Google', 'TikTok', 'LinkedIn'],
-    menuNote: 'AI SEO and paid advertising',
   },
   {
     id: 'training',
@@ -79,7 +76,6 @@ export const services = [
     text: 'Tailored programs for youth, startups, NGOs, corporates and institutions.',
     icon: 'graduation-cap',
     chips: ['Youth', 'Startups', 'NGOs', 'Corporates', 'Institutions'],
-    menuNote: 'Training for youth, startups, NGOs and corporates',
   },
   {
     id: 'ai',
@@ -88,7 +84,6 @@ export const services = [
     text: 'People counting, face recognition, attendance systems, smart CCTV analytics, dashboards and reporting.',
     icon: 'cpu',
     chips: ['People counting', 'Face recognition', 'Attendance', 'CCTV analytics', 'Dashboards'],
-    menuNote: 'People counting, face recognition, smart CCTV',
   },
   {
     id: 'security',
@@ -97,7 +92,6 @@ export const services = [
     text: 'Server management, CCTV systems, access control, biometric attendance and alarm systems.',
     icon: 'shield-check',
     chips: ['Server management', 'CCTV', 'Access control', 'Biometric', 'Alarms'],
-    menuNote: 'Server, CCTV, access control and biometric attendance',
   },
 ]
 
