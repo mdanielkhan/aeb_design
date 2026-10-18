@@ -6,10 +6,24 @@ export default function Process() {
     <section className="process" id="process" aria-labelledby="process-title">
       <div className="wrap">
         <div className="process__head" data-reveal>
-          <p className="eyebrow">How we work</p>
-          <h2 id="process-title" className="section-title">
-            Four stages, every time.
-          </h2>
+          <div className="process__head-left">
+            <p className="eyebrow">How we work</p>
+            <h2 id="process-title" className="section-title">
+              Four stages, every time.
+            </h2>
+          </div>
+          <div className="process__head-right">
+            <p className="process__intro soft">
+              Every engagement follows the same four stages, from the first conversation to
+              long-term support. We listen first, design around what we heard, build hands-on, and
+              stay on to help you scale.
+            </p>
+            <ul role="list" className="process__tags">
+              <li>Training cohort</li>
+              <li>Marketplace launch</li>
+              <li>ERP rollout</li>
+            </ul>
+          </div>
         </div>
 
         <ol role="list" className="process__timeline">
@@ -24,10 +38,6 @@ export default function Process() {
             </li>
           ))}
         </ol>
-
-        <p className="process__note small soft" data-reveal>
-          The same four stages run a training cohort, a marketplace launch or an ERP rollout.
-        </p>
       </div>
     </section>
   )

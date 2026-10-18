@@ -1,18 +1,5 @@
-import { Boxes, Cpu, GraduationCap, Megaphone, ShieldCheck, ShoppingCart } from 'lucide-react'
-import { contact, pillars, services } from '../content'
-import { WhatsAppIcon } from './Icons'
+import { pillars } from '../content'
 import './About.css'
-
-const serveTags = ['Business', 'Non-profit', 'Corporate', 'Institutional']
-
-const serviceIcons = {
-  'shopping-cart': ShoppingCart,
-  boxes: Boxes,
-  megaphone: Megaphone,
-  'graduation-cap': GraduationCap,
-  cpu: Cpu,
-  'shield-check': ShieldCheck,
-}
 
 export default function About() {
   return (
@@ -86,41 +73,6 @@ export default function About() {
                 inclusive growth.&rdquo;
               </p>
             </blockquote>
-
-            <div className="founder__serve">
-              <p className="founder__block-label small soft">Who we serve</p>
-              <ul role="list" className="founder__tags">
-                {serveTags.map((tag) => (
-                  <li key={tag}>{tag}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="founder__do">
-              <p className="founder__block-label small soft">What we do</p>
-              <ul role="list" className="founder__service-chips">
-                {services.map((service) => {
-                  const Icon = serviceIcons[service.icon]
-                  return (
-                    <li key={service.id}>
-                      <a href="#services">
-                        <Icon aria-hidden="true" strokeWidth={1.5} />
-                        {service.title}
-                      </a>
-                    </li>
-                  )
-                })}
-              </ul>
-              <a
-                className="btn btn--primary founder__whatsapp"
-                href={`https://wa.me/${contact.whatsappNumber}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <WhatsAppIcon className="btn__mark" />
-                Talk to us on WhatsApp
-              </a>
-            </div>
           </div>
         </div>
       </section>
