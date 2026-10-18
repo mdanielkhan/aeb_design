@@ -1,0 +1,103 @@
+.team {
+  padding-block: var(--section);
+}
+
+.team__head {
+  align-items: end;
+  row-gap: 1.25rem;
+  margin-bottom: clamp(2.5rem, 2rem + 2.5vw, 4.5rem);
+}
+
+@media (max-width: 899px) {
+  .team__head .section-title {
+    order: -1;
+  }
+}
+
+.team__note {
+  max-width: 30ch;
+  color: var(--ink-soft);
+}
+
+/* Gutterless strip of portraits; one shared treatment unifies the
+   different backgrounds the original photographs were taken against. */
+.team__strip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  margin: 0;
+  padding: 0 var(--margin);
+  list-style: none;
+}
+
+.person figure {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.person__frame {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--paper-2);
+}
+
+.person:nth-child(even) .person__frame {
+  background: var(--blue-soft);
+}
+
+.person__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  filter: grayscale(1) contrast(1.05);
+  mix-blend-mode: multiply;
+  transition:
+    filter 600ms var(--ease-out),
+    transform 900ms var(--ease-out);
+}
+
+.person:hover .person__frame img {
+  filter: none;
+  transform: scale(1.04);
+}
+
+.person figcaption {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1.25rem 1.5rem 0 0;
+}
+
+.person__name {
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.person__role {
+  color: var(--ink-soft);
+  font-size: var(--step-small);
+}
+
+@media (hover: none) {
+  .person__frame img {
+    filter: none;
+  }
+}
+
+@media (max-width: 1099px) {
+  .team__strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 2.5rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .team__strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 2rem;
+  }
+
+  .person figcaption {
+    padding-right: 0.75rem;
+  }
+}

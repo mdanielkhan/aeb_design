@@ -1,0 +1,233 @@
+/* The header lies flush on the masthead: an ink block for the wordmark,
+   a brand-blue tab of links running to the 42% axis, one action at right. */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: stretch;
+  height: var(--header-h);
+  background: var(--paper);
+  transition: transform 450ms var(--ease-out);
+}
+
+.site-header.is-tucked:not(:focus-within) {
+  transform: translateY(-100%);
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  flex: none;
+  width: 11rem;
+  padding-inline: var(--margin) 0;
+  background: var(--navy);
+  --focus: var(--yellow);
+}
+
+.site-header__brand img {
+  width: auto;
+  height: 2.25rem;
+}
+
+.site-header__tab {
+  display: flex;
+  align-items: stretch;
+  width: calc(42vw - 11rem);
+  min-width: max-content;
+  background: var(--blue);
+  --focus: var(--yellow);
+}
+
+.site-header__tab ul {
+  display: flex;
+  align-items: stretch;
+  margin: 0;
+  padding-inline: 0.5rem;
+}
+
+.site-header__tab a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-inline: 1rem;
+  color: var(--white);
+  font-size: var(--step-small);
+  font-weight: 500;
+  text-decoration: none;
+  outline-offset: -3px;
+}
+
+.site-header__tab a::after {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0;
+  height: 4px;
+  background: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.site-header__tab a:hover::after,
+.site-header__tab a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.site-header__end {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: auto;
+  padding-right: var(--margin);
+}
+
+.site-header__phone {
+  font-size: var(--step-small);
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-header__phone:hover {
+  color: var(--blue);
+}
+
+.site-header__cta {
+  min-height: 2.75rem;
+  padding-inline: 1.25rem;
+  font-size: var(--step-small);
+}
+
+.site-header__menu {
+  display: none;
+}
+
+@media (max-width: 1099px) {
+  .site-header__phone {
+    display: none;
+  }
+}
+
+@media (max-width: 899px) {
+  .site-header__tab,
+  .site-header__end {
+    display: none;
+  }
+
+  .site-header__menu {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    padding-inline: var(--margin);
+    min-width: 5.5rem;
+    justify-content: center;
+    border: 0;
+    background: var(--yellow);
+    color: var(--ink);
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .site-header__brand img {
+    height: 2rem;
+  }
+}
+
+/* ---------- phone menu panel ---------- */
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--margin) calc(2rem + env(safe-area-inset-bottom, 0px));
+  background: var(--navy);
+  color: var(--white);
+  overflow-y: auto;
+}
+
+.mobile-menu[hidden] {
+  display: none;
+}
+
+.mobile-menu__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+}
+
+.mobile-menu__top img {
+  width: auto;
+  height: 2rem;
+}
+
+.mobile-menu__close {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-right: -0.5rem;
+  border: 0;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.mobile-menu__close-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.mobile-menu__links {
+  margin: 2.5rem 0 0;
+}
+
+.mobile-menu__links a {
+  display: block;
+  padding-block: 0.4rem;
+  font-size: var(--step-head);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  text-decoration: none;
+}
+
+.mobile-menu__links a:active {
+  color: var(--yellow);
+}
+
+.mobile-menu__foot {
+  display: grid;
+  justify-items: start;
+  gap: 1.25rem;
+  margin-top: auto;
+  padding-top: 3rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mobile-menu:not([hidden]) {
+    animation: menu-in 420ms var(--ease-out);
+  }
+  .mobile-menu:not([hidden]) .mobile-menu__links li {
+    animation: menu-item 520ms var(--ease-out) both;
+  }
+  .mobile-menu__links li:nth-child(2) { animation-delay: 40ms; }
+  .mobile-menu__links li:nth-child(3) { animation-delay: 80ms; }
+  .mobile-menu__links li:nth-child(4) { animation-delay: 120ms; }
+  .mobile-menu__links li:nth-child(5) { animation-delay: 160ms; }
+}
+
+@keyframes menu-in {
+  from { opacity: 0; }
+}
+
+@keyframes menu-item {
+  from { opacity: 0; transform: translateY(16px); }
+}

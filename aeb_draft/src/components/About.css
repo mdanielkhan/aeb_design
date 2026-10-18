@@ -1,0 +1,148 @@
+/* ---------- intro: lead line over four columns ---------- */
+
+.intro {
+  padding-block: clamp(3rem, 2rem + 3vw, 5rem) var(--section);
+}
+
+.intro__lead {
+  max-width: 62ch;
+  font-size: var(--step-lead);
+}
+
+.intro__pillars {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2.5rem var(--gutter);
+  margin-top: clamp(3rem, 2rem + 3vw, 4.5rem);
+  padding: 0;
+  list-style: none;
+}
+
+.intro__pillars li {
+  line-height: 1.5;
+}
+
+.intro__pillars strong {
+  font-weight: 500;
+}
+
+@media (max-width: 1099px) {
+  .intro__pillars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 599px) {
+  .intro__pillars {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* ---------- founder: a full page of brand blue ---------- */
+
+.founder {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.founder__inner {
+  align-items: start;
+  padding-block: var(--section);
+}
+
+.founder__portrait {
+  position: sticky;
+  top: calc(var(--header-h) + 2rem);
+  margin-left: calc(var(--margin) * -1);
+}
+
+.founder__portrait img {
+  width: 100%;
+  max-width: 34rem;
+  height: auto;
+}
+
+.founder__text {
+  display: grid;
+  gap: 2.25rem;
+  max-width: 50rem;
+}
+
+.founder__statement {
+  max-width: 48ch;
+}
+
+.founder__body {
+  max-width: 60ch;
+}
+
+.founder__facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem var(--gutter);
+  margin-top: 1rem;
+  padding: 1.75rem;
+  background: var(--blue-2);
+}
+
+.founder__facts dt {
+  color: var(--blue-soft);
+  font-size: var(--step-small);
+}
+
+.founder__facts dd {
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.founder__records {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem var(--gutter);
+  margin-top: 1.5rem;
+}
+
+.founder__record-title {
+  margin-bottom: 1rem;
+  font-size: var(--step-body);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--white);
+}
+
+.founder__records ul {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.founder__records li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.founder__year {
+  flex: none;
+  color: var(--blue-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 899px) {
+  .founder__inner {
+    gap: 2.5rem;
+  }
+
+  .founder__portrait {
+    position: static;
+    max-width: 24rem;
+  }
+
+  .founder__facts,
+  .founder__records {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

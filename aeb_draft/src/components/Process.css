@@ -1,0 +1,65 @@
+.process {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.process__inner {
+  position: relative;
+  padding-block: var(--section);
+}
+
+.process__steps {
+  display: grid;
+  gap: clamp(2.5rem, 2rem + 2vw, 4rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* step 0 starts at the margin, step 3 lands exactly on the 42% axis */
+.process__step {
+  padding-left: calc(var(--axis) * var(--step) / 3);
+}
+
+.process__line {
+  font-size: var(--step-head);
+  letter-spacing: -0.045em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.process__step:last-child .process__line {
+  color: var(--yellow);
+}
+
+.process__text {
+  max-width: 34ch;
+  margin-top: 0.85rem;
+  color: var(--on-dark-soft);
+}
+
+.process__note {
+  max-width: 28ch;
+  margin-top: clamp(3rem, 2rem + 4vw, 6rem);
+  color: var(--on-dark-soft);
+}
+
+@media (min-width: 900px) {
+  .process__note {
+    position: absolute;
+    left: var(--margin);
+    bottom: var(--section);
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 899px) {
+  .process__step {
+    padding-left: calc(6vw * var(--step));
+  }
+
+  .process__line {
+    white-space: normal;
+    font-size: var(--step-head);
+  }
+}

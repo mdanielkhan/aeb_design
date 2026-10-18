@@ -1,0 +1,202 @@
+.contact {
+  padding-block: var(--section);
+}
+
+.contact__grid {
+  align-items: start;
+  row-gap: 3.5rem;
+}
+
+.contact__side {
+  display: grid;
+  gap: 1.75rem;
+}
+
+@media (min-width: 900px) {
+  .contact__side {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+    padding-right: 1rem;
+  }
+}
+
+.contact__statement {
+  max-width: 30ch;
+}
+
+.contact__details {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 1rem;
+}
+
+.contact__details dt {
+  color: var(--ink-soft);
+  font-size: var(--step-small);
+}
+
+.contact__details dd {
+  max-width: 32ch;
+  margin-top: 0.15rem;
+}
+
+/* ---------- the composer: Carbon-like filled fields, square corners ---------- */
+
+.composer {
+  display: grid;
+  gap: 2rem;
+  padding: clamp(1.5rem, 1rem + 2vw, 3rem);
+  background: var(--white);
+}
+
+.chips {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.chips legend,
+.field label {
+  display: block;
+  margin-bottom: 0.75rem;
+  padding: 0;
+  font-weight: 500;
+  font-size: var(--step-small);
+}
+
+.chips__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  position: relative;
+  cursor: pointer;
+}
+
+.chip input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.chip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  background: var(--paper-2);
+  font-size: var(--step-small);
+  line-height: 1.2;
+  transition:
+    background-color var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.chip:hover span {
+  background: var(--blue-soft);
+}
+
+.chip:active span {
+  transform: scale(0.97);
+}
+
+.chip input:checked + span {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.chip input:focus-visible + span {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.composer__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem var(--gutter);
+}
+
+.field input,
+.field textarea {
+  display: block;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-bottom: 2px solid var(--ink-soft);
+  border-radius: 0;
+  background: var(--paper);
+  font-size: var(--step-body);
+  transition:
+    border-color var(--dur-fast) ease,
+    background-color var(--dur-fast) ease;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.field input:hover,
+.field textarea:hover {
+  background: var(--paper-2);
+}
+
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 0;
+  border-bottom-color: var(--blue);
+}
+
+.field--error input,
+.field--error textarea {
+  border-bottom-color: #b42318;
+}
+
+.field__error {
+  margin-top: 0.5rem;
+  color: #b42318;
+  font-size: var(--step-small);
+}
+
+.composer__preview {
+  padding: 1.25rem 1.5rem;
+  background: var(--paper);
+}
+
+.composer__preview-label {
+  color: var(--ink-soft);
+  font-size: var(--step-small);
+}
+
+.composer__subject {
+  margin-top: 0.25rem;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.composer__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.composer__status:empty {
+  display: none;
+}
+
+@media (max-width: 599px) {
+  .composer__fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .composer__actions .btn {
+    width: 100%;
+  }
+}
