@@ -115,13 +115,13 @@ export const testimonials = [
   },
 ]
 
-export const network = [
-  'Rehmati Communication Services',
-  'Rise Forge Foundation',
-  'Liberia Anti-Corruption Commission',
-  'Chever',
-  'QuickFix',
-  'Victory Drivers Training',
+export const partners = [
+  { name: 'Rehmati Communication Services', logo: '/images/logos/rehmati.png' },
+  { name: 'Rise Forge Foundation', logo: '/images/logos/rise-forge.png' },
+  { name: 'Liberia Anti-Corruption Commission', logo: '/images/logos/lacc.png' },
+  { name: 'Chever', logo: '/images/logos/chever.png' },
+  { name: 'QuickFix', logo: '/images/logos/quickfix.png' },
+  { name: 'Victory Drivers Training', logo: '/images/logos/victory.png' },
 ]
 
 export const audiences = ['Young person', 'Startup', 'NGO', 'Corporate', 'Institution']

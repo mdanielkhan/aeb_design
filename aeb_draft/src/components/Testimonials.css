@@ -1,173 +1,98 @@
-/* Two flat blocks butted together: the people in ink, the words in blue. */
 .voices {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  min-height: min(44rem, 80svh);
-  color: var(--white);
-}
-
-.voices__people {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 3rem;
-  padding: clamp(2rem, 1.5rem + 2vw, 3.5rem) var(--margin);
   background: var(--navy);
+  padding-block: var(--section);
 }
 
-.voices__title {
-  max-width: 14ch;
-  font-size: var(--step-lead);
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-}
-
-.voices__switch {
-  display: grid;
-  gap: 0.25rem;
-}
-
-.voices__tab {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-  padding: 0.75rem;
-  border: 0;
-  background: transparent;
-  color: var(--on-dark-soft);
-  text-align: left;
-  cursor: pointer;
-  transition:
-    background-color var(--dur-fast) ease,
-    color var(--dur-fast) ease;
-}
-
-.voices__tab:hover {
-  background: var(--navy-2);
-  color: var(--white);
-}
-
-.voices__tab[aria-selected='true'] {
-  background: var(--navy-2);
-  color: var(--white);
-}
-
-.voices__tab {
-  position: relative;
-}
-
-.voices__tab::before {
-  content: '';
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  background: var(--yellow);
-  transform: scaleY(0);
-  transition: transform var(--dur) var(--ease-out);
-}
-
-.voices__tab[aria-selected='true']::before {
-  transform: none;
-}
-
-.voices__tab img {
-  flex: none;
-  width: 3rem;
-  height: 3rem;
-  object-fit: cover;
-  filter: grayscale(1);
-  transition: filter var(--dur) ease;
-}
-
-.voices__tab[aria-selected='true'] img,
-.voices__tab:hover img {
-  filter: none;
-}
-
-.voices__name,
-.voices__role {
-  display: block;
-}
-
-.voices__name {
-  font-weight: 500;
-}
-
-.voices__role {
-  font-size: var(--step-small);
-  opacity: 0.85;
+.voices__inner {
+  max-width: 48rem;
 }
 
 .voices__quote {
-  display: flex;
-  padding: clamp(2rem, 1.5rem + 3vw, 4.5rem) clamp(1.5rem, 1rem + 3vw, 4.5rem);
-  background: var(--blue);
+  margin-top: clamp(2rem, 1.5rem + 2vw, 3rem);
 }
 
-.voices__figure {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 3rem;
-  width: 100%;
-}
-
-.voices__figure blockquote p {
-  max-width: 40ch;
-  font-size: var(--step-lead);
-  font-weight: 500;
-  letter-spacing: -0.025em;
-  line-height: 1.2;
-  text-indent: -0.42em;
-}
-
-.voices__figure figcaption {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.voices__dash {
-  flex: none;
-  width: 2.5rem;
-  height: 4px;
-  background: var(--yellow);
+.voices__text {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.3rem + 2.2vw, 3rem);
+  font-weight: 440;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .voices__figure blockquote,
-  .voices__figure figcaption {
-    animation: quote-in 700ms var(--ease-out) both;
-  }
-
-  .voices__figure figcaption {
-    animation-delay: 90ms;
+  .voices__quote figure {
+    animation: quote-in 600ms var(--ease-out) both;
   }
 }
 
 @keyframes quote-in {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(14px);
   }
 }
 
-@media (max-width: 899px) {
-  .voices {
-    grid-template-columns: minmax(0, 1fr);
-    min-height: 0;
-  }
+.voices__quote figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 1.75rem;
+}
 
-  .voices__quote {
-    min-height: 0;
-  }
+.voices__name {
+  font-weight: 500;
+}
 
-  .voices__figure {
-    gap: 2.5rem;
-  }
+.voices__controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 2rem + 1.5vw, 3.5rem);
+}
 
-  .voices__people {
-    gap: 1.5rem;
-  }
+.voices__arrow {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(246, 243, 238, 0.3);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--on-dark);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) ease, background-color var(--dur-fast) ease;
+}
+
+.voices__arrow:hover {
+  border-color: var(--on-dark);
+  background: rgba(246, 243, 238, 0.08);
+}
+
+.voices__arrow-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.voices__count {
+  min-width: 3ch;
+}
+
+.voices__recognition {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-top: clamp(3rem, 2.4rem + 2vw, 4.5rem);
+  padding-top: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+  border-top: 1px solid rgba(246, 243, 238, 0.16);
+  color: var(--on-dark-soft);
+  line-height: 1.6;
+}
+
+.voices__recognition-mark {
+  flex: none;
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-bottom: 0.3em;
+  border-radius: 50%;
+  background: var(--accent);
 }

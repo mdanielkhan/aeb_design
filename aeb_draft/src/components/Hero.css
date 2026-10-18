@@ -1,64 +1,27 @@
+/* Dark navy hero: a subtle navy-to-darker-navy gradient, one headline,
+   no photography, no slider. The transparent header sits on top of it. */
+
 .hero {
-  padding-bottom: clamp(4rem, 3rem + 4vw, 7rem);
+  background: linear-gradient(165deg, var(--navy) 0%, var(--navy-deep) 100%);
 }
 
-/* ---------- masthead band: 6 × 2, no gutters ---------- */
-
-.hero__band {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  grid-template-areas:
-    'a b b b c d'
-    'a e f g g d';
-  height: clamp(20rem, 46svh, 34rem);
-  overflow: hidden;
-}
-
-.hero__tile {
-  position: relative;
-  overflow: hidden;
-  min-height: 0;
-}
-
-.hero__tile img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero__tile--navy {
-  background: var(--navy);
-}
-
-.hero__tile--blue {
-  background: var(--blue);
-}
-
-.hero__tile--yellow {
-  background: var(--yellow);
-}
-
-/* ---------- title on the axis ---------- */
-
-.hero__body {
-  align-items: start;
-  padding-top: clamp(2.5rem, 1rem + 4vw, 5.5rem);
-}
-
-.hero__standfirst {
-  max-width: 30ch;
-  padding-top: 0.6em;
-  line-height: 1.3;
-  letter-spacing: -0.015em;
-  font-size: clamp(1.0625rem, 0.9rem + 0.5vw, 1.375rem);
+.hero__inner {
+  max-width: 54rem;
+  padding-top: clamp(7rem, 5.5rem + 6vw, 11rem);
+  padding-bottom: clamp(3.5rem, 2.5rem + 3vw, 5rem);
 }
 
 .hero__title {
+  max-width: 16ch;
   font-size: var(--step-display);
-  letter-spacing: -0.06em;
-  line-height: 0.9;
-  text-wrap: nowrap;
+  letter-spacing: -0.025em;
+  line-height: 1.04;
+}
+
+.hero__lead {
+  margin-top: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  font-size: clamp(1.125rem, 1.02rem + 0.5vw, 1.375rem);
+  color: var(--on-dark-soft);
 }
 
 .hero__actions {
@@ -66,110 +29,44 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem 2rem;
-  margin-top: clamp(1.75rem, 1rem + 2vw, 2.75rem);
+  margin-top: clamp(2rem, 1.5rem + 2vw, 2.75rem);
 }
 
-/* masked line reveal: each line rises from behind its own baseline */
-.lines .line {
-  display: block;
-  overflow: hidden;
-  padding-bottom: 0.1em;
-  margin-bottom: -0.1em;
+.hero__actions .text-link {
+  color: var(--on-dark);
 }
 
-.lines [data-line] {
-  display: block;
+.hero__trust {
+  padding-top: clamp(2rem, 1.5rem + 2vw, 3rem);
+  padding-bottom: clamp(2rem, 1.5rem + 2vw, 3rem);
+  border-top: 1px solid rgba(246, 243, 238, 0.12);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .js .lines [data-line] {
-    transform: translateY(105%);
-    animation: line-up 1000ms var(--ease-out) forwards;
-    animation-delay: calc(var(--i) * 110ms + 250ms);
-  }
-
-  .js .hero__standfirst,
-  .js .hero__actions {
-    animation: fade-up 800ms var(--ease-out) 600ms both;
-  }
-
-  /* masthead tiles open one after another, like plates being laid */
-  .js .hero__tile {
-    animation: tile-open 900ms var(--ease-out) both;
-    animation-delay: calc(var(--i) * 70ms);
-  }
-
-  .hero__tile img.is-drifting {
-    animation: drift 18s var(--ease-in-out) infinite alternate;
-  }
+.hero__trust-label {
+  margin-bottom: 1.25rem;
 }
 
-@keyframes line-up {
-  to {
-    transform: none;
-  }
+.hero__logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1.75rem, 1.4rem + 1.8vw, 3rem);
 }
 
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
+.hero__logos img {
+  height: clamp(1.15rem, 1rem + 0.6vw, 1.5rem);
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.6;
+  transition: opacity var(--dur-fast) ease;
 }
 
-@keyframes tile-open {
-  from {
-    clip-path: inset(0 0 100% 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
+.hero__logos img:hover {
+  opacity: 1;
 }
-
-@keyframes drift {
-  from {
-    transform: scale(1.02);
-  }
-  to {
-    transform: scale(1.1) translateX(-2%);
-  }
-}
-
-/* ---------- phone: 3 × 2 band, axis collapses to the margin ---------- */
 
 @media (max-width: 899px) {
-  .hero__band {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-areas:
-      'b b a'
-      'f c d';
-    height: clamp(15rem, 38svh, 24rem);
-  }
-
-  .hero__tile:nth-child(5),
-  .hero__tile:nth-child(7) {
-    display: none;
-  }
-
-  .hero__body {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hero__body .on-axis {
-    display: contents;
-  }
-
-  .hero__title { order: 1; }
-  .hero__standfirst { order: 2; margin-top: 1.5rem; }
-  .hero__actions { order: 3; }
-
   .hero__title {
-    font-size: clamp(3rem, 14vw, 5.5rem);
-  }
-
-  .hero__standfirst {
-    max-width: 34ch;
-    padding-top: 0;
+    max-width: 13ch;
   }
 }

@@ -2,200 +2,121 @@
   padding-block: var(--section);
 }
 
-/* Mosaic of unlike tiles: three bands of 6+6, 4+4+4 and 6+3+3 columns. */
-.services__grid {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-auto-rows: minmax(22rem, auto);
-  grid-template-areas:
-    'head head head head head head commerce commerce commerce commerce commerce commerce'
-    'systems systems systems systems photo photo photo photo security security security security'
-    'training training training training training training ai ai ai marketing marketing marketing';
-  gap: 0.5rem;
-}
-
-.tile {
-  position: relative;
-  min-width: 0;
-  overflow: hidden;
-}
-
-.tile--paper {
-  background: var(--paper-2);
-}
-
-.tile--white {
-  background: var(--white);
-}
-
-.tile--navy {
-  background: var(--navy);
-  color: var(--white);
-  --focus: var(--yellow);
-}
-
-.tile--blue {
-  background: var(--blue);
-  color: var(--white);
-  --focus: var(--yellow);
-}
-
 .services__head {
-  grid-area: head;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+  margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+.services__head-text {
+  grid-column: 1 / span 6;
 }
 
 .services__intro {
-  max-width: 26ch;
+  grid-column: 8 / span 5;
+  align-self: end;
 }
 
-.services__photo {
-  grid-area: photo;
+.services__list {
+  border-top: 1px solid var(--line);
 }
 
-.services__photo img,
-.service__photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.services__list li {
+  border-bottom: 1px solid var(--line);
 }
 
-.services__photo img {
-  transition: transform 1200ms var(--ease-out);
+.services__row {
+  display: grid;
+  align-items: baseline;
+  column-gap: var(--gutter);
+  padding-block: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--dur) var(--ease-out);
 }
 
-.services__photo:hover img {
-  transform: scale(1.04);
+.services__row:hover,
+.services__row:focus-visible {
+  transform: translateX(clamp(0.5rem, 1.2vw, 1.25rem));
 }
 
-/* ---------- a service tile ---------- */
-
-.service {
-  display: flex;
-}
-
-.service__text {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: clamp(1.5rem, 1rem + 1vw, 2rem);
-}
-
-.service__title {
-  max-width: 16ch;
-  font-size: var(--step-lead);
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-}
-
-.service__body {
-  max-width: 38ch;
-  margin-top: auto;
-  padding-top: 2.5rem;
-}
-
-.tile--navy .service__body,
-.tile--blue .service__body {
-  color: var(--on-dark-soft);
-}
-
-.tile--blue .service__body {
-  color: #dbe8ef;
-}
-
-.tile--white .service__body,
-.tile--paper .service__body {
+.services__num {
+  grid-column: 1 / span 1;
   color: var(--ink-soft);
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
-.service__ask {
-  display: inline-flex;
-  align-items: center;
-  align-self: flex-start;
-  min-height: 2.75rem;
-  margin-top: 1.25rem;
-  margin-bottom: -0.5rem;
-  font-weight: 500;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.3em;
-  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
-  transition: text-decoration-color var(--dur-fast) ease;
+.services__name {
+  grid-column: 2 / span 4;
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 1.15rem + 1vw, 1.875rem);
+  font-weight: 480;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
 }
 
-.service__ask:hover,
-.service__ask:focus-visible {
-  text-decoration-color: currentColor;
+.services__desc {
+  grid-column: 6 / span 5;
+  font-size: var(--step-body);
+  line-height: 1.5;
 }
 
-.service--with-photo .service__text {
-  flex-basis: 55%;
+.services__arrow {
+  grid-column: 12 / span 1;
+  justify-self: end;
+  width: 1.1rem;
+  height: 1.1rem;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
 }
 
-.service--with-photo .service__photo {
-  flex: 0 0 45%;
-  width: 45%;
-  height: auto;
-  min-height: 100%;
+.services__row:hover .services__arrow,
+.services__row:focus-visible .services__arrow {
+  opacity: 1;
+  transform: none;
 }
 
-/* ---------- tablet and phone ---------- */
-
-@media (max-width: 1099px) {
-  .services__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: minmax(18rem, auto);
-    grid-template-areas:
-      'head head'
-      'commerce photo'
-      'systems security'
-      'training training'
-      'ai marketing';
-  }
-}
-
-@media (max-width: 599px) {
-  .services__grid {
-    grid-template-columns: minmax(0, 1fr);
-    grid-auto-rows: auto;
-    grid-template-areas:
-      'head'
-      'photo'
-      'commerce'
-      'systems'
-      'security'
-      'training'
-      'ai'
-      'marketing';
-    gap: 0.375rem;
+@media (max-width: 899px) {
+  .services__head-text,
+  .services__intro {
+    grid-column: 1 / span 4;
   }
 
-  .services__photo {
-    aspect-ratio: 4 / 3;
+  .services__intro {
+    margin-top: 1rem;
   }
 
-  .service__text {
-    min-height: 16rem;
+  .services__row {
+    grid-template-columns: auto 1fr auto;
+    row-gap: 0.4rem;
   }
 
-  .service--with-photo {
-    flex-direction: column;
+  .services__num {
+    grid-column: 1 / span 1;
+    grid-row: 1;
   }
 
-  .service--with-photo .service__text {
-    flex-basis: auto;
+  .services__name {
+    grid-column: 2 / span 1;
+    grid-row: 1;
   }
 
-  .service--with-photo .service__photo {
-    flex: none;
-    width: 100%;
-    height: 15rem;
-    min-height: 0;
-    order: -1;
-    object-position: 50% 40%;
+  .services__arrow {
+    grid-column: 3 / span 1;
+    grid-row: 1;
+    opacity: 1;
+    transform: none;
+  }
+
+  .services__desc {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .services__row:hover,
+  .services__row:focus-visible {
+    transform: none;
   }
 }

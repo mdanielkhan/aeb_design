@@ -1,6 +1,6 @@
 import { useId, useState } from 'react'
 import { audiences, contact, services } from '../content'
-import { ArrowIcon } from './Icons'
+import { ArrowIcon, WhatsAppIcon } from './Icons'
 import './Contact.css'
 
 // There is no form backend, so the form composes a ready-to-send message and
@@ -110,17 +110,32 @@ export default function Contact({ picked, setPicked }) {
 
   return (
     <section className="contact wrap" id="contact" aria-labelledby="contact-title">
-      <div className="axis-grid contact__grid">
+      <div className="contact__grid grid12">
         <div className="contact__side">
-          <h2 id="contact-title" className="section-title" data-reveal>
-            Let’s talk.
+          <p className="eyebrow" data-reveal>
+            Get in touch
+          </p>
+          <h2 id="contact-title" className="section-title" data-reveal style={{ '--d': 1 }}>
+            Let&rsquo;s talk.
           </h2>
-          <p className="contact__statement lead" data-reveal style={{ '--d': 1 }}>
-            Tell us what you need and who it’s for: a training cohort, a store, a system or a security
-            setup.
+          <p className="contact__statement lead measure" data-reveal style={{ '--d': 2 }}>
+            Tell us what you need and who it&rsquo;s for: a training cohort, a store, a system or a
+            security setup.
           </p>
 
-          <dl className="contact__details" data-reveal style={{ '--d': 2 }}>
+          <a
+            className="btn btn--primary contact__whatsapp"
+            href={`https://wa.me/${contact.whatsappNumber}`}
+            target="_blank"
+            rel="noreferrer"
+            data-reveal
+            style={{ '--d': 3 }}
+          >
+            <WhatsAppIcon className="btn__mark" />
+            Chat on WhatsApp
+          </a>
+
+          <dl className="contact__details" data-reveal style={{ '--d': 3 }}>
             <div>
               <dt>Call</dt>
               <dd>
@@ -138,14 +153,6 @@ export default function Contact({ picked, setPicked }) {
               </dd>
             </div>
             <div>
-              <dt>WhatsApp</dt>
-              <dd>
-                <a className="text-link" href={`https://wa.me/${contact.whatsappNumber}`} target="_blank" rel="noreferrer">
-                  Message us on WhatsApp
-                </a>
-              </dd>
-            </div>
-            <div>
               <dt>Visit</dt>
               <dd>{contact.address}</dd>
             </div>
@@ -156,9 +163,9 @@ export default function Contact({ picked, setPicked }) {
           </dl>
         </div>
 
-        <form className="composer on-axis" onSubmit={sendEmail} noValidate data-reveal style={{ '--d': 1 }}>
+        <form className="composer" onSubmit={sendEmail} noValidate data-reveal style={{ '--d': 2 }}>
           <fieldset className="chips">
-            <legend>I’m reaching out as</legend>
+            <legend>I&rsquo;m reaching out as</legend>
             <div className="chips__list">
               {audiences.map((item) => (
                 <label key={item} className="chip">
@@ -177,7 +184,7 @@ export default function Contact({ picked, setPicked }) {
           </fieldset>
 
           <fieldset className="chips">
-            <legend>I’m interested in</legend>
+            <legend>I&rsquo;m interested in</legend>
             <div className="chips__list">
               {services.map((service) => (
                 <label key={service.id} className="chip">
@@ -201,7 +208,7 @@ export default function Contact({ picked, setPicked }) {
           {field('message', 'What do you need?', { multiline: true, required: true })}
 
           <div className="composer__preview" aria-live="polite">
-            <p className="composer__preview-label">Your message will read</p>
+            <p className="composer__preview-label small soft">Your message will read</p>
             <p className="composer__subject">{draft.subject}</p>
           </div>
 
@@ -210,7 +217,8 @@ export default function Contact({ picked, setPicked }) {
               Send by email
               <ArrowIcon />
             </button>
-            <button type="button" className="btn btn--dark" onClick={sendWhatsApp}>
+            <button type="button" className="btn btn--outline" onClick={sendWhatsApp}>
+              <WhatsAppIcon className="btn__mark" />
               Send on WhatsApp
             </button>
           </div>

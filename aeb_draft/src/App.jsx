@@ -6,7 +6,6 @@ import Services from './components/Services'
 import Process from './components/Process'
 import Team from './components/Team'
 import Testimonials from './components/Testimonials'
-import Gallery from './components/Gallery'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -55,7 +54,6 @@ export default function App() {
         <Process />
         <Team />
         <Testimonials />
-        <Gallery />
         <Contact picked={picked} setPicked={setPicked} />
       </main>
       <Footer />

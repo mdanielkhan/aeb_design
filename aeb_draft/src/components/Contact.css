@@ -8,8 +8,9 @@
 }
 
 .contact__side {
+  grid-column: 1 / span 5;
   display: grid;
-  gap: 1.75rem;
+  gap: 1.5rem;
 }
 
 @media (min-width: 900px) {
@@ -24,10 +25,14 @@
   max-width: 30ch;
 }
 
+.contact__whatsapp {
+  justify-self: start;
+}
+
 .contact__details {
   display: grid;
   gap: 1.1rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .contact__details dt {
@@ -40,13 +45,15 @@
   margin-top: 0.15rem;
 }
 
-/* ---------- the composer: Carbon-like filled fields, square corners ---------- */
+/* ---------- the composer ---------- */
 
 .composer {
+  grid-column: 7 / span 6;
   display: grid;
   gap: 2rem;
   padding: clamp(1.5rem, 1rem + 2vw, 3rem);
   background: var(--white);
+  border: 1px solid var(--line);
 }
 
 .chips {
@@ -98,7 +105,7 @@
 }
 
 .chip:hover span {
-  background: var(--blue-soft);
+  background: color-mix(in srgb, var(--accent) 25%, var(--paper-2));
 }
 
 .chip:active span {
@@ -149,9 +156,9 @@
 
 .field input:focus-visible,
 .field textarea:focus-visible {
-  outline: 2px solid var(--blue);
+  outline: 2px solid var(--focus);
   outline-offset: 0;
-  border-bottom-color: var(--blue);
+  border-bottom-color: var(--ink);
 }
 
 .field--error input,
@@ -171,8 +178,7 @@
 }
 
 .composer__preview-label {
-  color: var(--ink-soft);
-  font-size: var(--step-small);
+  margin-bottom: 0;
 }
 
 .composer__subject {
@@ -189,6 +195,13 @@
 
 .composer__status:empty {
   display: none;
+}
+
+@media (max-width: 899px) {
+  .contact__side,
+  .composer {
+    grid-column: 1 / span 4;
+  }
 }
 
 @media (max-width: 599px) {
